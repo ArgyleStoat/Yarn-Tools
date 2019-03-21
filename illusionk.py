@@ -13,7 +13,8 @@
 #add wrong row formatting
 
 #save to new file
-
+import sys
+print(sys.argv)
 
 handle = open(input("What file do you want to use? "), "r")
 finish = input("What filename would you like to save to? ")
