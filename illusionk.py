@@ -14,10 +14,32 @@
 
 #save to new file
 
-#collect data from user on file to open, file to save to, and row size
-handle = open(input("What file do you want to use? "), "r")
-finish = input("What filename would you like to save to? ")
-stlength = len(range(int(input("How many stitches would you like in a row? ")))) - 1
+#allows preferences for files and row length via commanline argument
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument("infile", nargs = '?', default = None, help = "Enter is the text file you want to open.")
+parser.add_argument("outfile", nargs = '?', default = None, help = "Enter the filename you wish to save to.")
+parser.add_argument("rowlen", nargs = '?', default = None, help="Enter your desired number of stitches per row.", type=int)
+
+args = parser.parse_args()
+
+#prompts user for data if args not given
+if args.infile is None:
+    handle = open(input("What file do you want to use? "), "r")
+else:
+    handle = open(args.infile, "r")
+
+if args.outfile is None:
+    finish = input("What filename would you like to save to? ")
+else:
+    finish = args.outfile
+
+if args.rowlen is None:
+    stlength = len(range(int(input("How many stitches would you like in a row? ")))) - 1
+else:
+    stlength = len(range(args.rowlen)) - 1
 
 #converts text doc to binary format
 contents = handle.read()
