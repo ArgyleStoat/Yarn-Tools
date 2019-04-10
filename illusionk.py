@@ -37,9 +37,9 @@ else:
     finish = args.outfile
 
 if args.rowlen is None:
-    stlength = len(range(int(input("How many stitches would you like in a row? ")))) - 1
+    stlength = int(input("How many stitches would you like in a row? ")) - 1
 else:
-    stlength = len(range(args.rowlen)) - 1
+    stlength = args.rowlen - 1
 
 #converts text doc to binary format
 contents = handle.read()
