@@ -61,6 +61,10 @@ listtwo = ""
 #appends i to chosen list
 #checks item count against max row length
 #adds either space or new line depending on count, adds 1 to counter or rests depending on count, toggles wlist
+if (len(cbin)) % (stlength + 1) != 0:
+    nummissing = ((stlength + 1) - (len(cbin) % (stlength + 1)))
+    cbin += '0' * nummissing
+
 for i in cbin:
 
     if wlist:
@@ -82,7 +86,6 @@ for i in cbin:
             listone += "\n"
             countone = 0
             wlist = not wlist
-
 
 #replaces 1s and 0s in pattern with stitch types
 #splits up lists by making each line 1 item
